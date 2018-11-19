@@ -5,11 +5,11 @@ namespace Book;
 
 class Book
 {
-    private $height;
+    private $width;
 
-    function __construct($height)
+    function __construct($width)
     {
-        $this->height = $height;
+        $this->width = $width;
     }
 
     /**
@@ -17,9 +17,9 @@ class Book
      *
      * @return mixed
      */
-    public function getHeight()
+    public function getWidth()
     {
-        return $this->height;
+        return $this->width;
 
     }
 

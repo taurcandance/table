@@ -3,8 +3,6 @@
 namespace Table;
 
 
-use TableLeg\TableLeg;
-
 class Table
 {
     private $legs;
@@ -16,13 +14,13 @@ class Table
 
     function checkStabilization()
     {
-        if ($this->legs[0] !== $this->legs[1] |
-            $this->legs[1] !== $this->legs[2] |
-            $this->legs[2] !== $this->legs[3] |
-            $this->legs[3] !== $this->legs[0]) {
-            return 'Not stable';
-        } else {
-            return 'stable!';
+        $stable = true;
+        $diff   = array_sum($this->legs) / count($this->legs);
+        foreach ($this->legs as $leg) {
+            if (abs($leg - $diff) > 10) {
+                return $stable = false;
+            }
         }
+        return $stable;
     }
 }
