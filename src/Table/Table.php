@@ -6,10 +6,12 @@ namespace Table;
 class Table
 {
     private $legs;
+    private $weight;
 
-    function __construct($legs)
+    function __construct($legs, $weight)
     {
         $this->legs = $legs;
+        $this->weight = $weight;
     }
 
     function checkStabilization()
@@ -22,5 +24,15 @@ class Table
             }
         }
         return $stable;
+    }
+
+    /**
+     * Get Wight.
+     *
+     * @return mixed
+     */
+    public function getWeight()
+    {
+        return array_sum($this->weight);
     }
 }
