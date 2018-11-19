@@ -25,7 +25,7 @@ $weight = array(
     $leg1->getWeight(),
 );
 
-$newTable = new Table($legs, $weight);
+$newTable = new Table($legs, $weight, 10, 5);
 
 echo '<pre>';
 print_r($newTable);
