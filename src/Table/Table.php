@@ -3,6 +3,8 @@
 namespace Table;
 
 
+use TableLeg\TableLeg;
+
 class Table
 {
     private $legs;
@@ -39,5 +41,22 @@ class Table
     public function getWeight()
     {
         return array_sum($this->weight) + $this->weightTableTop;
+    }
+
+    public function setNewTop($newTopWeight, $newTopHeight)
+    {
+        $this->weightTableTop = $newTopWeight;
+        $this->heightTableTop = $newTopHeight;
+    }
+
+    public function getHeight()
+    {
+        return $this->heightTableTop + $this->getWeight();
+    }
+
+    public function setLeg($index, $newlegHeight, $newlegWeight)
+    {
+        $newLeg = new TableLeg($newlegHeight,$newlegWeight);
+        $this->legs[$index] = $newLeg->getWeight();
     }
 }
