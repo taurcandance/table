@@ -7,11 +7,15 @@ class Table
 {
     private $legs;
     private $weight;
+    private $heightTableTop;
+    private $weightTableTop;
 
-    function __construct($legs, $weight)
+    function __construct($legs, $weight, $weightTableTop, $heightTableTop)
     {
-        $this->legs = $legs;
-        $this->weight = $weight;
+        $this->legs           = $legs;
+        $this->weight         = $weight;
+        $this->heightTableTop = $heightTableTop;
+        $this->weightTableTop = $weightTableTop;
     }
 
     function checkStabilization()
@@ -23,6 +27,7 @@ class Table
                 return $stable = false;
             }
         }
+
         return $stable;
     }
 
@@ -33,6 +38,6 @@ class Table
      */
     public function getWeight()
     {
-        return array_sum($this->weight);
+        return array_sum($this->weight) + $this->weightTableTop;
     }
 }
