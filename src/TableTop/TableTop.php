@@ -7,6 +7,7 @@ class TableTop
 {
     private $height;
     private $weight;
+    private $color;
 
     public function __construct($height, $weight)
     {
@@ -35,4 +36,24 @@ class TableTop
         return $this->weight;
 
     }
+
+    /**
+     * Get Color.
+     *
+     * @return mixed
+     */
+    public function getColor()
+    {
+        return $this->color;
+
+    }
+
+    /**
+     * @param mixed $color
+     */
+    public function setColor($color): void
+    {
+        $this->color = $color;
+    }
+
 }

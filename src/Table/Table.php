@@ -59,4 +59,10 @@ class Table
         $newLeg = new TableLeg($newlegHeight,$newlegWeight);
         $this->legs[$index] = $newLeg->getWeight();
     }
+
+    public function getHigthestLeg()
+    {
+        sort($this->legs);
+        return array_pop($this->legs);
+    }
 }

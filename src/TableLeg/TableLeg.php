@@ -6,6 +6,7 @@ class TableLeg
 {
     private $height;
     private $weight;
+    private $color;
 
 
     function __construct($height, $weight)
@@ -33,6 +34,25 @@ class TableLeg
     public function getHeight()
     {
         return $this->height;
+    }
+
+    /**
+     * Get Color.
+     *
+     * @return mixed
+     */
+    public function getColor()
+    {
+        return $this->color;
 
     }
+
+    /**
+     * @param mixed $color
+     */
+    public function setColor($color): void
+    {
+        $this->color = $color;
+    }
+
 }
