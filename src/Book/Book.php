@@ -5,14 +5,33 @@ namespace Book;
 
 class Book
 {
-    private $width;
+    private $height;
     private $weight;
     private $color;
 
-    function __construct($width, $weight)
+    function __construct($width, $weight, $color)
     {
-        $this->width = $width;
+        $this->height = $width;
         $this->weight = $weight;
+        $this->color  = $color;
+    }
+
+    /**
+     * Get Width.
+     *
+     * @return mixed
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @param mixed $height
+     */
+    public function setHeight($height): void
+    {
+        $this->height = $height;
     }
 
     /**
@@ -23,18 +42,14 @@ class Book
     public function getWeight()
     {
         return $this->weight;
-
     }
 
     /**
-     * Get Height.
-     *
-     * @return mixed
+     * @param mixed $weight
      */
-    public function getWidth()
+    public function setWeight($weight): void
     {
-        return $this->width;
-
+        $this->weight = $weight;
     }
 
     /**
@@ -45,7 +60,6 @@ class Book
     public function getColor()
     {
         return $this->color;
-
     }
 
     /**
@@ -55,6 +69,4 @@ class Book
     {
         $this->color = $color;
     }
-
-
 }

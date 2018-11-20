@@ -1,4 +1,5 @@
 <?php
+
 namespace TableLeg;
 
 
@@ -9,10 +10,29 @@ class TableLeg
     private $color;
 
 
-    function __construct($height, $weight)
+    function __construct($height, $weight, $color)
     {
         $this->height = $height;
         $this->weight = $weight;
+        $this->color  = $color;
+    }
+
+    /**
+     * Get Height.
+     *
+     * @return mixed
+     */
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    /**
+     * @param mixed $height
+     */
+    public function setHeight($height): void
+    {
+        $this->height = $height;
     }
 
     /**
@@ -23,17 +43,14 @@ class TableLeg
     public function getWeight()
     {
         return $this->weight;
-
     }
 
     /**
-     * Get HeightLeg.
-     *
-     * @return mixed
+     * @param mixed $weight
      */
-    public function getHeight()
+    public function setWeight($weight): void
     {
-        return $this->height;
+        $this->weight = $weight;
     }
 
     /**
@@ -44,7 +61,6 @@ class TableLeg
     public function getColor()
     {
         return $this->color;
-
     }
 
     /**
@@ -54,5 +70,4 @@ class TableLeg
     {
         $this->color = $color;
     }
-
 }

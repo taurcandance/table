@@ -9,10 +9,11 @@ class TableTop
     private $weight;
     private $color;
 
-    public function __construct($height, $weight)
+    public function __construct($height, $weight, $color)
     {
         $this->weight = $weight;
         $this->height = $height;
+        $this->color  = $color;
     }
 
     /**
@@ -23,7 +24,14 @@ class TableTop
     public function getHeight()
     {
         return $this->height;
+    }
 
+    /**
+     * @param mixed $height
+     */
+    public function setHeight($height): void
+    {
+        $this->height = $height;
     }
 
     /**
@@ -34,7 +42,14 @@ class TableTop
     public function getWeight()
     {
         return $this->weight;
+    }
 
+    /**
+     * @param mixed $weight
+     */
+    public function setWeight($weight): void
+    {
+        $this->weight = $weight;
     }
 
     /**
@@ -45,7 +60,6 @@ class TableTop
     public function getColor()
     {
         return $this->color;
-
     }
 
     /**
@@ -55,5 +69,4 @@ class TableTop
     {
         $this->color = $color;
     }
-
 }

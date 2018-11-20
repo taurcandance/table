@@ -8,24 +8,25 @@ use TableLeg\TableLeg;
 class Table
 {
     private $legs;
-    private $weight;
-    private $heightTableTop;
-    private $weightTableTop;
+    private $tableTop;
 
-    function __construct($legs, $weight, $weightTableTop, $heightTableTop)
+    function __construct($legs, $tableTop)
     {
-        $this->legs           = $legs;
-        $this->weight         = $weight;
-        $this->heightTableTop = $heightTableTop;
-        $this->weightTableTop = $weightTableTop;
+        $this->legs     = $legs;
+        $this->tableTop = $tableTop;
     }
 
     function checkStabilization()
     {
-        $stable = true;
-        $diff   = array_sum($this->legs) / count($this->legs);
+        $legsHeightArray = array();
         foreach ($this->legs as $leg) {
-            if (abs($leg - $diff) > 10) {
+            $legsHeightArray[] = $leg->getHeight();
+        }
+
+        $stable = true;
+        $diff   = array_sum($legsHeightArray) / count($legsHeightArray);
+        foreach ($legsHeightArray as $legHeight) {
+            if (abs($legHeight - $diff) > 10) {
                 return $stable = false;
             }
         }
@@ -40,29 +41,53 @@ class Table
      */
     public function getWeight()
     {
-        return array_sum($this->weight) + $this->weightTableTop;
+        $legsWeightArray = array();
+        foreach ($this->legs as $leg) {
+            $legsWeightArray[] = $leg->getWeight();
+        }
+
+        return array_sum($legsWeightArray) + $this->tableTop->getWeight();
     }
 
-    public function setNewTop($newTopWeight, $newTopHeight)
+    public function setNewLeg($newLeg)
     {
-        $this->weightTableTop = $newTopWeight;
-        $this->heightTableTop = $newTopHeight;
+        array_push($this->legs, $newLeg);
+    }
+
+    public function setNewTop($newTableTop)
+    {
+        $this->tableTop = $newTableTop;
     }
 
     public function getHeight()
     {
-        return $this->heightTableTop + $this->getWeight();
+        return $this->tableTop->getHeight() + $this->getHighestLegHeight();
     }
 
-    public function setLeg($index, $newlegHeight, $newlegWeight)
+    public function getHighestLegHeight()
     {
-        $newLeg = new TableLeg($newlegHeight,$newlegWeight);
-        $this->legs[$index] = $newLeg->getWeight();
+        $legsHeightArray = array();
+        foreach ($this->legs as $leg) {
+            $legsHeightArray[] = $leg->getHeight();
+        }
+        sort($legsHeightArray);
+
+        return array_pop($legsHeightArray);
     }
 
-    public function getHigthestLeg()
+    public function getHighestLeg()
     {
-        sort($this->legs);
-        return array_pop($this->legs);
+        $i          = 0;
+        $elem       = 0;
+        $indexFound = false;
+        foreach ($this->legs as $leg) {
+            if ($elem < $leg->getHeight()) {
+                $elem       = $leg->getHeight();
+                $indexFound = $i;
+            }
+            $i++;
+        }
+
+        return $this->legs[$indexFound];
     }
 }
