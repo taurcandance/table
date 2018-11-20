@@ -3,8 +3,6 @@
 namespace Table;
 
 
-use TableLeg\TableLeg;
-
 class Table
 {
     private $legs;
