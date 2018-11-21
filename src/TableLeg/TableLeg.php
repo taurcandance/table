@@ -9,7 +9,6 @@ class TableLeg
     private $weight;
     private $color;
 
-
     function __construct(int $height, int $weight, string $color)
     {
         $this->height = $height;
