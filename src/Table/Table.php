@@ -3,12 +3,14 @@
 namespace Table;
 
 
+use TableTop\TableTop;
+
 class Table
 {
     private $legs;
     private $tableTop;
 
-    function __construct($legs, $tableTop)
+    function __construct(array $legs, TableTop $tableTop)
     {
         $this->legs     = $legs;
         $this->tableTop = $tableTop;

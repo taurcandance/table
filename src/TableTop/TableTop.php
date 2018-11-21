@@ -9,7 +9,7 @@ class TableTop
     private $weight;
     private $color;
 
-    public function __construct($height, $weight, $color)
+    public function __construct(int $height, int $weight, string $color)
     {
         $this->weight = $weight;
         $this->height = $height;
