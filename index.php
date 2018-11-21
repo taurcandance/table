@@ -7,14 +7,13 @@ use TableLeg\TableLeg;
 use Book\Book;
 use TableTop\TableTop;
 
-$book = new Book(5,1,'blue');
-$leg1 = new TableLeg(54, 2, 'red');
-$leg2 = new TableLeg(50, 2, 'blue');
-$leg3 = new TableLeg(50, 2, 'yellow');
-$legs = [$leg1, $leg2, $leg3, $book];
 $tableTop = new TableTop(5, 2, 'green');
+$newTable = new Table($tableTop);
 
-$newTable = new Table($legs, $tableTop);
+$newTable->addLeg(new Book(5,1,'blue'));
+$newTable->addLeg(new TableLeg(50,1,'blue'));
+$newTable->addLeg(new TableLeg(54, 2, 'red'));
+$newTable->addLeg(new TableLeg(50, 2, 'blue'));
 
 var_dump($newTable);
 

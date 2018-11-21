@@ -3,21 +3,30 @@
 namespace Table;
 
 
+use TableLeg\TableLeg;
 use TableTop\TableTop;
 
 class Table
 {
-    private $legs;
+    private $legs = array();
     private $tableTop;
 
-    function __construct(array $legs, TableTop $tableTop)
+    public function __construct(TableTop $tableTop, array $legs = null)
     {
-        $this->legs     = $legs;
+        if(!is_null($legs))
+        {$this->legs     = $legs;}
         $this->tableTop = $tableTop;
     }
 
-    function checkStabilization()
+    public function addLeg($newTableLeg)
     {
+        $this->legs[] = $newTableLeg;
+    }
+
+    public function checkStabilization()
+    {
+        if(count($this->legs) < 3){return false;}
+
         $legsHeightArray = array();
         foreach ($this->legs as $leg) {
             $legsHeightArray[] = $leg->getHeight();
@@ -47,11 +56,6 @@ class Table
         }
 
         return array_sum($legsWeightArray) + $this->tableTop->getWeight();
-    }
-
-    public function setNewLeg($newLeg)
-    {
-        array_push($this->legs, $newLeg);
     }
 
     public function setNewTop($newTableTop)
