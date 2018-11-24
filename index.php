@@ -3,17 +3,17 @@ $start = microtime(true);
 require __DIR__.'/vendor/autoload.php';
 
 use Table\Table;
-use TableLeg\TableLeg;
 use Book\Book;
 use TableTop\TableTop;
 
 $tableTop = new TableTop(5, 2, 'green');
 $newTable = new Table($tableTop);
 
-$newTable->addLeg(new Book(5,1,'blue'));
-$newTable->addLeg(new TableLeg(50,1,'blue'));
-$newTable->addLeg(new TableLeg(54, 2, 'red'));
-$newTable->addLeg(new TableLeg(50, 2, 'blue'));
+$book = new Book(5, 1, 'blue');
+$newTable->addLeg($book->getWidth(), $book->getWeight(), $book->getColor());
+$newTable->addLeg(50, 1, 'blue');
+$newTable->addLeg(54, 2, 'red');
+$newTable->addLeg(50, 2, 'blue');
 
 var_dump($newTable);
 
@@ -28,9 +28,8 @@ echo $newTable->getHeight().'<br />';
 echo $newTable->getHighestLegHeight().'<br />';
 
 var_dump($newTable->getHighestLeg());
-
 $newTable->getHighestLeg()->setWeight(10);
-
 var_dump($newTable->getHighestLeg());
 
+echo 'Count legs :'.$newTable->getCountLegs().'<br />';
 echo 'Время выполнения скрипта: '.round(microtime(true) - $start, 4).' сек.';

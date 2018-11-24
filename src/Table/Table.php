@@ -10,17 +10,20 @@ class Table
 {
     private $legs = array();
     private $tableTop;
+    private $countLegs;
 
     public function __construct(TableTop $tableTop, array $legs = null)
     {
         if(!is_null($legs))
         {$this->legs     = $legs;}
         $this->tableTop = $tableTop;
+        $this->countLegs = 0;
     }
 
-    public function addLeg($newTableLeg)
+    public function addLeg(int $height, int $weight, string $color)
     {
-        $this->legs[] = $newTableLeg;
+        $this->countLegs++;
+        $this->legs[] = new TableLeg($height, $weight, $color);
     }
 
     public function checkStabilization()
@@ -93,5 +96,15 @@ class Table
         }
 
         return $this->legs[$indexFound];
+    }
+
+    /**
+     * Get CountLegs.
+     *
+     * @return int
+     */
+    public function getCountLegs(): int
+    {
+        return $this->countLegs;
     }
 }
