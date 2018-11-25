@@ -3,11 +3,11 @@
 namespace TableLeg;
 
 
-class TableLeg
+abstract class TableLeg
 {
-    private $height;
-    private $weight;
-    private $color;
+    protected $height;
+    protected $weight;
+    protected $color;
 
     function __construct(int $height, int $weight, string $color)
     {

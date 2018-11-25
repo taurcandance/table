@@ -1,19 +1,23 @@
 <?php
-$start = microtime(true);
 require __DIR__.'/vendor/autoload.php';
 
+use BaseLeg\BaseLeg;
+use LegOfJunk\LegOfJunk;
 use Table\Table;
 use Book\Book;
 use TableTop\TableTop;
 
-$tableTop = new TableTop(5, 2, 'green');
-$newTable = new Table($tableTop);
+$book            = new Book(5, 1, 'blue');
+$book2           = new Book(7, 1, 'red');
+$partsJunkForLeg = [$book, $book, $book2, $book2, $book, $book2, $book, $book, $book, $book];
+$legOfJunk       = new LegOfJunk($partsJunkForLeg);
+$leg1            = new BaseLeg(54, 2, 'red');
+$leg2            = new BaseLeg(55, 2, 'blue');
+$leg3            = new BaseLeg(50, 2, 'yellow');
+$legs            = [$leg1, $leg2, $leg3, $legOfJunk];
+$tableTop        = new TableTop(5, 7, 'green');
 
-$book = new Book(5, 1, 'blue');
-$newTable->addLeg($book->getWidth(), $book->getWeight(), $book->getColor());
-$newTable->addLeg(50, 1, 'blue');
-$newTable->addLeg(54, 2, 'red');
-$newTable->addLeg(50, 2, 'blue');
+$newTable = new Table($tableTop, $legs);
 
 var_dump($newTable);
 
@@ -23,13 +27,9 @@ if ($newTable->checkStabilization()) {
     echo 'NOt Stable<br />';
 };
 
-echo $newTable->getWeight().'<br />';
-echo $newTable->getHeight().'<br />';
-echo $newTable->getHighestLegHeight().'<br />';
-
+$newTable->getHighestLeg()->setWeight(20);
 var_dump($newTable->getHighestLeg());
-$newTable->getHighestLeg()->setWeight(10);
-var_dump($newTable->getHighestLeg());
-
-echo 'Count legs :'.$newTable->getCountLegs().'<br />';
-echo 'Время выполнения скрипта: '.round(microtime(true) - $start, 4).' сек.';
+var_dump($newTable->getCountLegs());
+var_dump($newTable->getHighestLegHeight());
+var_dump($newTable->getHeight());
+var_dump($newTable->getWeight());
