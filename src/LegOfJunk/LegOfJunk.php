@@ -43,7 +43,6 @@ class LegOfJunk extends TableLeg
         };
 
         return array_reduce($this->parts, $getFullWeight);
-
     }
 
     private function getPatsColor()
@@ -59,5 +58,4 @@ class LegOfJunk extends TableLeg
 
         return array_reduce($this->parts, $getColorString);
     }
-
 }

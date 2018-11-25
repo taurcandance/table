@@ -7,13 +7,12 @@ use Table\Table;
 use Book\Book;
 use TableTop\TableTop;
 
-$book            = new Book(5, 1, 'blue');
-$book2           = new Book(7, 1, 'red');
-$partsJunkForLeg = [$book, $book, $book2, $book2, $book, $book2, $book, $book, $book, $book];
+$book            = new Book(6, 1, 'red');
+$partsJunkForLeg = [$book, $book, $book, $book, $book, $book, $book, $book, $book, $book];
 $legOfJunk       = new LegOfJunk($partsJunkForLeg);
-$leg1            = new BaseLeg(54, 2, 'red');
-$leg2            = new BaseLeg(55, 2, 'blue');
-$leg3            = new BaseLeg(50, 2, 'yellow');
+$leg1            = new BaseLeg(54, 2, 'wooden');
+$leg2            = new BaseLeg(55, 2, 'wooden');
+$leg3            = new BaseLeg(50, 2, 'wooden');
 $legs            = [$leg1, $leg2, $leg3, $legOfJunk];
 $tableTop        = new TableTop(5, 7, 'green');
 
