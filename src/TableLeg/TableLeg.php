@@ -7,7 +7,7 @@ abstract class TableLeg
 {
     protected $height;
     protected $weight;
-    protected $color;
+    protected $color = '';
 
     function __construct(int $height, int $weight, string $color)
     {

@@ -2,17 +2,13 @@
 
 namespace LegOfJunk;
 
-
+use Exception;
 use TableLeg\TableLeg;
 
 class LegOfJunk extends TableLeg
 {
     private $parts = [];
     private $countParts;
-    protected $height;
-    protected $weight;
-    protected $color = '';
-
 
     public function __construct(array $partsForLeg)
     {
@@ -20,10 +16,9 @@ class LegOfJunk extends TableLeg
         $this->countParts = count($partsForLeg);
         $this->height     = self::getAmountHeight();
         $this->weight     = self::getAmountWeight();
-        $this->color      = self::getPatsColor();
     }
 
-    private function getAmountHeight()
+    private function getAmountHeight()  //todo ??
     {
         $getFullHeight = function ($carry, $item) {
             $carry += $item->getHeight();
@@ -45,17 +40,8 @@ class LegOfJunk extends TableLeg
         return array_reduce($this->parts, $getFullWeight);
     }
 
-    private function getPatsColor()
+    public function getColor()
     {
-        $getColorString = function ($carry, $item) {
-            if (is_null($carry)) {
-                $carry .= $item->getColor();
-            }
-            $carry .= '+'.$item->getColor();
-
-            return $carry;
-        };
-
-        return array_reduce($this->parts, $getColorString);
+        throw new Exception('Нет конкретного цвета');
     }
 }
