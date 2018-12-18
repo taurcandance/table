@@ -18,7 +18,7 @@ class LegOfJunk extends TableLeg
         $this->weight     = self::getAmountWeight();
     }
 
-    private function getAmountHeight()  //todo ??
+    private function getAmountHeight()
     {
         $getFullHeight = function ($carry, $item) {
             $carry += $item->getHeight();
